@@ -10,6 +10,11 @@ pipeline{
         DOCKER_PASS = credentials('dockerhub-password')
     }
     stages{
+        stage("Build java app"){
+            steps{
+                sh "mvn clean package install"
+            }
+        }
         stage("build java app image"){
             steps{
                 script{
